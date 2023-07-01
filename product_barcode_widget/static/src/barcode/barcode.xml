@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <t t-name="owl.ProductBarcode" owl="1">
+
+        <div>
+
+            <!-- <input type="range" t-on-change="(ev)=>this.props.update(ev.target.value)" t-att-value="props.value"/> -->
+
+            <input type="text" class="o_input" t-ref="barcodeField" t-on-change="(ev)=>this.props.update(ev.target.value)"  t-on-input="barcodeOnChange" t-att-value="state.barcodeValue"/>
+            
+            <img t-att-src="state.barcodeImageUrl" alt="barcode" />
+
+        </div>
+
+    </t>
+</templates>

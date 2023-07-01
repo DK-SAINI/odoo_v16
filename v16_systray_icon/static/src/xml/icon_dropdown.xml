@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="v16_systray_icon.DropDownExample" owl="1">
+        <div class="dropdown">
+            <button class="dropdown-toggle" t-on-click="toggleDropDown">
+                Toggle Dropdown
+            </button>
+            <ul class="dropdown-menu" t-att-class="state.isOpen ? 'show' : ''" t-on-click.stop="">
+                <li><a href="#">Option 1</a></li>
+                <li><a href="#">Option 2</a></li>
+                <li><a href="#">Option 3</a></li>
+            </ul>
+        </div>
+    </t>
+</template>
