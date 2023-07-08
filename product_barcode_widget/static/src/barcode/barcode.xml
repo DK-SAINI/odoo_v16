@@ -6,7 +6,7 @@
 
             <!-- <input type="range" t-on-change="(ev)=>this.props.update(ev.target.value)" t-att-value="props.value"/> -->
 
-            <input type="text" class="o_input" t-ref="barcodeField" t-on-change="(ev)=>this.props.update(ev.target.value)"  t-on-input="barcodeOnChange" t-att-value="state.barcodeValue"/>
+            <input type="text" id="barcodeInput" class="o_input" t-ref="barcodeField" t-on-change="(ev)=>this.props.update(ev.target.value)"  t-on-input="barcodeOnChange" t-att-value="state.barcodeValue"/>
             
             <img t-att-src="state.barcodeImageUrl" alt="barcode" />
 

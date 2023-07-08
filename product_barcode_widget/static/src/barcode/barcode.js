@@ -7,51 +7,50 @@ import { Component, useState, useRef, onMounted, onWillUnmount } from "@odoo/owl
 
 class ProductBarcode extends Component {
     setup() {
-        this.state = useState({ barcodeValue: this.props.value || '', barcodeImageUrl: '' });
-
-
-        onMounted(() => {
-            if (this.props.value){
-                this.generateBarcode();
-            }
-            
+        this.state = useState({
+            barcodeValue: this.props.value || '',
+            barcodeImageUrl: '',
         });
-
-        // onWillUnmount(() => {
-        //     if (this.props.value){
-        //         this.generateBarcode();
-        //     }
-        // });
-
+        this.fieldRef = useRef('barcodeField');
+        this.onMounted();
+        // this.onWillUnmount();
     }
+
+    onMounted() {
+        this.generateBarcode();
+    }
+
+    // onWillUnmount() {
+    //     const barcodeField = this.fieldRef.el;
+    //     if (barcodeField) {
+    //         barcodeField.removeEventListener('input', this.barcodeOnChange.bind(this));
+    //     }
+    // }
 
     async barcodeOnChange(event) {
         const barcodeValue = event.target.value;
-        if (barcodeValue){
-            this.state.barcodeValue = barcodeValue;
-            await this.generateBarcode();
-        }
+        this.state.barcodeValue = barcodeValue;
+        await this.generateBarcode();
     }
 
     async generateBarcode() {
         const barcodeValue = this.state.barcodeValue;
-        if (barcodeValue){
+        if (barcodeValue) {
             const barcodeImageUrl = await this.generateBarcodeImage(barcodeValue);
             this.state.barcodeImageUrl = barcodeImageUrl;
+        } else {
+            this.state.barcodeImageUrl = '';
         }
     }
 
     async generateBarcodeImage(barcodeValue) {
-        // Example using JsBarcode
         const canvas = document.createElement('canvas');
-        JsBarcode(canvas, barcodeValue, { 
-            format: 'CODE128',  
-            // displayValue: true 
+        JsBarcode(canvas, barcodeValue, {
+            format: 'CODE128',
         });
         return canvas.toDataURL('image/png');
     }
 }
-
 
 ProductBarcode.template = "owl.ProductBarcode";
 ProductBarcode.props = {
