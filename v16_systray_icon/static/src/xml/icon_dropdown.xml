@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
     <t t-name="v16_systray_icon.DropDownExample" owl="1">
-        <div class="dropdown">
+        <div class="dropdown" t-ref="dropdownRef">
             <button class="dropdown-toggle" t-on-click="toggleDropDown">
                 Toggle Dropdown
             </button>

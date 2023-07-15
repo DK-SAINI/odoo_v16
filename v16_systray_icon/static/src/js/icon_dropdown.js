@@ -1,23 +1,41 @@
 /** @odoo-module **/
 
 import { registry } from "@web/core/registry";
-import { useService } from "@web/core/utils/hooks";
 
-const { Component, useState } = owl;
+const { Component, useState, OnMounted, OnWillUnmount, useRef} = owl;
 
 class DropDownSystray extends Component {
 
-	setup() {
+    setup() {
+        this.dropdownRef = useRef('dropdownRef');
+        console.log(this.dropdownRef.el)
         this.state = useState({ isOpen: false });
+        this.OnMounted();
+    }
+
+
+    OnMounted() {
+        document.addEventListener("click", this.onClickOutside);
+    }
+
+    OnWillUnmount() {
+        document.removeEventListener("click", this.onClickOutside);
     }
 
     toggleDropDown() {
         this.state.isOpen = !this.state.isOpen;
     }
 
-    closeDropDown() {
-        this.state.isOpen = false;
+    onClickOutside(event) {
+        console.log("@@@@@@@@@@@@", this.dropdownRef);
+        // const dropdownElement = event.target;
+        // const dropdown = this.dropdownRef.el;
+        // if (dropdown && !dropdown.contains(dropdownElement)) {
+        //     this.state.isOpen = false;
+        // }
     }
+
+
 
 }
 
