@@ -202,8 +202,8 @@ class CatalogueConfiguration(models.TransientModel):
 
     def sync_attributes_and_values(self, cursor, conn):
         tables = [
-            "catalog_turbocharger",
-            # "catalog_diesel_injection",
+            # "catalog_turbocharger",
+            "catalog_diesel_injection",
             # "catalog_turbocharger_spares",
             # "catalog_compressor_wheel_size",
         ]
@@ -218,11 +218,13 @@ class CatalogueConfiguration(models.TransientModel):
                 cursor.execute(query_values)
 
                 rows = cursor.fetchall()
-                for row in rows[0:3]:
+                for row in rows[0:100]:
                     row_data = dict(zip(columns, row))
                     iCatalogueID = row_data.pop("iCatalogueID")
 
-                    vPPCPartNo = row_data.pop("vPPCPartNo")
+                    product = row_data.pop("vPPCPartNo")
+
+                    vPPCPartNo = product.strip()
 
                     with self.env.cr.savepoint():
                         try:
