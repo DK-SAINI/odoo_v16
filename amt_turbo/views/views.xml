@@ -1,0 +1,18 @@
+<odoo>
+    <data>
+
+        <!-- Schedule the function to run every day at 1 AM -->
+        <record model="ir.cron" id="cron_scheduled_function">
+            <field name="name">Scheduled Function</field>
+            <field name="model_id" ref="model_product_mysql"/>
+            <field name="state">code</field>
+            <field name="code">model.connect_to_mysql()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="active" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

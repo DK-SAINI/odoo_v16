@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+   <t t-name="amt_catalogue_synch.ConnectionPanel" owl="1">
+        <div role="alert"
+            class="alert text-center mt-4"
+            t-attf-class="alert-danger d-{{this.state.type}}"
+        >
+            <span><t t-esc="this.state.msg"/></span>
+        </div>
+   </t>
+
+</templates>

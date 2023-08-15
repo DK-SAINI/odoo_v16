@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<menuitem 
+			id="menu_catalogue_sync"
+			name="Catalogue Synchronisation"
+			parent="base.menu_custom"
+			action="amt_catalogue_synch.action_catalogue_configuration"
+			groups="base.group_erp_manager"
+		/>
+
+	</data>
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+	<t t-name="amt_catalogue_synch.ConnectionHomeMenu" t-inherit="web_enterprise.HomeMenu" owl="1">
+		<xpath expr="//ExpirationPanel" position="after">
+			<ConectionPanel/>
+		</xpath>
+	</t>
+
+
+</templates>
