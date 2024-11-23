@@ -1,0 +1,42 @@
+<odoo>
+    <data>
+         <template id="inherit_configure_optional_products" inherit_id="sale_product_configurator.configure_optional_products">
+
+            <xpath expr="//tr[hasclass('o_total_row')]/td" position="before">
+                <td colspan="3" style="padding: 0; border: none;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr>
+                                <th class="text-center" style="border: 1px solid #000;">
+                                    <strong>Attribute Values:</strong>
+                                </th>
+                                <th class="text-center" style="border: 1px solid #000;">
+                                    <strong>On hand QTY:</strong>
+                                </th>
+                                <th class="text-center" style="border: 1px solid #000;">
+                                    <strong>Forecasted QTY:</strong>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center" style="border: 1px solid #000;">
+                                    <t t-foreach="product.product_template_attribute_value_ids" t-as="attribute_val">
+                                        <span style="white-space: nowrap;" t-field="attribute_val.display_name"/>
+                                    </t>
+                                </td>
+                                <td class="text-center" style="border: 1px solid #000;">
+                                    <span style="white-space: nowrap;" t-field="product.qty_available"/>
+                                </td>
+                                <td class="text-center" style="border: 1px solid #000;">
+                                    <span style="white-space: nowrap;" t-field="product.virtual_available"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </xpath>
+
+         </template>
+    </data>
+</odoo>
